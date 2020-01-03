@@ -13,6 +13,8 @@
             @ondrag="OnDrag"
             @onmousedown="OnMousePressed"
             @onmouseup="OnMouseReleased"
+            @onmouseout="OnMouseOut"
+            @onmouseover="OnMouseOver"
             style="opacity:@Opacity">
     </circle>
 
@@ -49,5 +51,9 @@
     public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
     [Parameter]
     public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
 
 }

@@ -1,0 +1,171 @@
+﻿
+@if (!NoFill && !NoStroke)
+{
+    <path d="@GetPath()" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+             stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+             stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+             stroke-linecap="@Cap.ToString().ToLower()"
+             stroke-width="@StrokeWidth"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+
+    </path>
+}
+else if (NoStroke && !NoFill)
+{
+    <path d="@GetPath()" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+    </path>
+}
+else if (!NoStroke && NoFill)
+{
+    <path d="@GetPath()"
+             stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+             stroke-width="@StrokeWidth"
+             stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+             stroke-linecap="@Cap.ToString().ToLower()"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+
+    </path>
+}
+else
+{
+    <path d="@GetPath()"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+    </path>
+}
+
+
+@code
+{
+    [Parameter]
+    public int X { get; set; }
+    [Parameter]
+    public int Y { get; set; }
+    [Parameter]
+    public double Radius { get; set; }
+    [Parameter]
+    public double StartAngle { get; set; }
+    [Parameter]
+    public double EndAngle { get; set; }
+    [Parameter]
+    public double Opacity { get; set; } = 1;
+    [Parameter]
+    public bool NoFill { get; set; }
+    [Parameter]
+    public System.Drawing.Color Color { get; set; }
+    [Parameter]
+    public bool NoStroke { get; set; }
+    [Parameter]
+    public Color StrokeColor { get; set; }
+    [Parameter]
+    public double StrokeWidth { get; set; } = 1;
+    [Parameter]
+    public StrokeLineCap Cap { get; set; }
+    [Parameter]
+    public StrokeLineJoin Join { get; set; }
+    [Parameter]
+    public int StrokeDashArray { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseMove { get; set; }
+    [Parameter]
+    public EventCallback<WheelEventArgs> OnMouseWheel { get; set; }
+    [Parameter]
+    public EventCallback<DragEventArgs> OnDrag { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
+    [Parameter]
+    public ArcMode Mode { get; set; } = ArcMode.PIE;
+    public enum ArcMode
+    {
+        PIE,
+        OPEN,
+        CHORD
+    }
+
+    private (double,double) PolarToCartesian(int centerX, int centerY,double radius,double angleInDegrees)
+    {
+        var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+
+        return
+            (centerX + (radius * Math.Cos(angleInRadians)),
+            centerY + (radius * Math.Sin(angleInRadians))
+            );
+    }
+    private string DescribeArc(int x,int y,double radius, double startAngle,double endAngle)
+    {
+
+        var start = PolarToCartesian(x, y, radius, endAngle);
+        var end = PolarToCartesian(x, y, radius, startAngle);
+
+        var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
+
+        var path="";
+        if(Mode==Arc.ArcMode.PIE)
+            path= $"M {start.Item1} {start.Item2} A {radius} {radius} 0 {arcSweep} 0 {end.Item1} {end.Item2} L {x} {y} L {start.Item1} {start.Item2}";
+        else if(Mode==ArcMode.OPEN)
+            path = $"M {start.Item1} {start.Item2} A {radius} {radius} 0 {arcSweep} 0 {end.Item1} {end.Item2} ";
+        else
+            path = $"M {start.Item1} {start.Item2} A {radius} {radius} 0 {arcSweep} 0 {end.Item1} {end.Item2} L {end.Item1} {end.Item2} L {start.Item1} {start.Item2}";
+
+        //var d = [
+        //    "M", start.x, start.y,
+        //    "A", radius, radius, 0, arcSweep, 0, end.x, end.y,
+        //    "L", x, y,
+        //    "L", start.x, start.y
+        //].join(" ");
+
+        return path;
+    }
+
+    private string GetPath()
+    {
+        return DescribeArc(X,Y,Radius,StartAngle,EndAngle);
+    }
+}

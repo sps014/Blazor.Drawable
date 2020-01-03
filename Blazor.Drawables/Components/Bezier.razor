@@ -1,22 +1,20 @@
 ﻿
-<line x1="@X1" y1="@Y1" x2="@X2" y2="@Y2"
-        r="@StrokeWidth"
-        fill="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
-        stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
-        stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
-        stroke-linecap="@Cap.ToString().ToLower()"
-        stroke-width="@StrokeWidth"
-        @onclick="OnClick"
-        @ondblclick="OnDoubleClick"
-        @onmousemove="OnMouseMove"
-        @onmousewheel="OnMouseWheel"
-        @ondrag="OnDrag"
-        @onmousedown="OnMousePressed"
-        @onmouseup="OnMouseReleased"
-        @onmouseout="OnMouseOut"
-        @onmouseover="OnMouseOver"
-        style="opacity:@Opacity">
-</line>
+<path d="@GetPath()"
+      r="@StrokeWidth"
+      fill="rgba(@Color.Transparent.R,@Color.Transparent.G,@Color.Transparent.B,@Color.Transparent.A)"
+      stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+      stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+      stroke-linecap="@Cap.ToString().ToLower()"
+      stroke-width="@StrokeWidth"
+      @onclick="OnClick"
+      @ondblclick="OnDoubleClick"
+      @onmousemove="OnMouseMove"
+      @onmousewheel="OnMouseWheel"
+      @ondrag="OnDrag"
+      @onmousedown="OnMousePressed"
+      @onmouseup="OnMouseReleased"
+      style="opacity:@Opacity">
+</path>
 
 @code
 {
@@ -28,6 +26,14 @@
     public int X2 { get; set; }
     [Parameter]
     public int Y2 { get; set; }
+    [Parameter]
+    public int X3 { get; set; }
+    [Parameter]
+    public int Y3 { get; set; }
+    [Parameter]
+    public int X4 { get; set; }
+    [Parameter]
+    public int Y4 { get; set; }
     [Parameter]
     public double Opacity { get; set; } = 1;
     [Parameter]
@@ -55,8 +61,9 @@
     public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
     [Parameter]
     public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
-    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
-    [Parameter]
-    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
-
+    
+    private string GetPath()
+    {
+        return $"M{X1},{Y1} C{X2},{Y2} {X3},{Y3} {X4},{Y4}";
+    }
 }

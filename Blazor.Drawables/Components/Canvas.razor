@@ -5,6 +5,8 @@
      @onmousewheel="OnMouseWheel"
      @ondrag="OnDrag"
      @onmousedown="OnMousePressed"
+     @onmouseout="OnMouseOut"
+     @onmouseover="OnMouseOver"
      @onmouseup="OnMouseReleased">
     @ChildContent
 </svg>
@@ -41,6 +43,10 @@
     public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
     [Parameter]
     public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
 
 
 }

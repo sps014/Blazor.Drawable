@@ -2,17 +2,14 @@
 @using Blazor.Drawables.Components
 @using System.Drawing
 
-    <Canvas BackgroundColor="Color.DodgerBlue" Height="200" Width="200" OnMouseMove="Clicked">
-    <Rect X="50" Y="50" Width="100" Height="100" RadiusX="20" RadiusY="20" Color="Color.FromArgb(255,255,255,51)" />
-    <Line X1="0" Y1="0" X2="200" Y2="200" StrokeDashArray="4" Opacity="0.5" />
-    <Triangle X1="200" Y1="0" X2="0" Y2="200" X3="200" Y3="200" Color="Color.LimeGreen" Opacity="0.5" />
-    <Circle X="x" Y="y" Radius="20" Color="col" NoFill="true" NoStroke="true" Opacity="0.6" StrokeDashArray="3" />
+    <Canvas BackgroundColor="Color.DodgerBlue" Height="200" Width="400" OnMouseMove="Clicked">
+        <Arc X="100" Y="100" Radius="100" StartAngle="0" EndAngle="100"
+                StrokeColor="Color.Black" StrokeWidth="5"  Mode="Arc.ArcMode.CHORD" Color="Color.Yellow"/>
     </Canvas>
 <p>(@x,@y)</p>
 
 @code
 {
-    Color col { get; set; } = Color.Magenta;
     int x, y;
     void Clicked(MouseEventArgs e)
     {
