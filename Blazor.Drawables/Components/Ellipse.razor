@@ -1,0 +1,124 @@
+﻿
+@if (!NoFill && !NoStroke)
+{
+    <ellipse cx="@X" cy="@Y" rx="@Width" ry="@Height" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+            stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+            stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+            stroke-linecap="@Cap.ToString().ToLower()"
+            stroke-width="@StrokeWidth"
+            @onclick="OnClick"
+            @ondblclick="OnDoubleClick"
+            @onmousemove="OnMouseMove"
+            @onmousewheel="OnMouseWheel"
+            @ondrag="OnDrag"
+            @onmousedown="OnMousePressed"
+            @onmouseup="OnMouseReleased"
+            @onmouseout="OnMouseOut"
+            @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+
+    </ellipse>
+}
+else if (NoStroke && !NoFill)
+{
+    <ellipse cx="@X" cy="@Y" rx="@Width" ry="@Height" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+            @onclick="OnClick"
+            @ondblclick="OnDoubleClick"
+            @onmousemove="OnMouseMove"
+            @onmousewheel="OnMouseWheel"
+            @ondrag="OnDrag"
+            @onmousedown="OnMousePressed"
+            @onmouseup="OnMouseReleased"
+            @onmouseout="OnMouseOut"
+            @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+    </ellipse>
+}
+else if (!NoStroke && NoFill)
+{
+    <ellpise cx="@X" cy="@Y" rx="@Width" ry="@Height"
+            stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+            stroke-width="@StrokeWidth"
+            stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+            stroke-linecap="@Cap.ToString().ToLower()"
+            @onclick="OnClick"
+            @ondblclick="OnDoubleClick"
+            @onmousemove="OnMouseMove"
+            @onmousewheel="OnMouseWheel"
+            @ondrag="OnDrag"
+            @onmousedown="OnMousePressed"
+            @onmouseup="OnMouseReleased"
+            @onmouseout="OnMouseOut"
+            @onmouseover="OnMouseOver"
+            style="opacity:@Opacity"
+
+             >
+
+    </ellpise>
+}
+else
+{
+    <ellipse cx="@X" cy="@Y" rx="@Width" ry="@Height"
+            @onclick="OnClick"
+            @ondblclick="OnDoubleClick"
+            @onmousemove="OnMouseMove"
+            @onmousewheel="OnMouseWheel"
+            @ondrag="OnDrag"
+            @onmousedown="OnMousePressed"
+            @onmouseup="OnMouseReleased"
+            @onmouseout="OnMouseOut"
+            @onmouseover="OnMouseOver"
+            style="opacity:@Opacity"
+>
+    </ellipse>
+}
+
+
+@code
+{
+    [Parameter]
+    public int X { get; set; }
+    [Parameter]
+    public int Y { get; set; }
+
+    [Parameter]
+    public double Width { get; set; }
+    [Parameter]
+    public double Height { get; set; }
+    [Parameter]
+    public double Opacity { get; set; } = 1;
+    [Parameter]
+    public bool NoFill { get; set; }
+    [Parameter]
+    public System.Drawing.Color Color { get; set; }
+    [Parameter]
+    public bool NoStroke { get; set; }
+    [Parameter]
+    public Color StrokeColor { get; set; }
+    [Parameter]
+    public double StrokeWidth { get; set; } = 1;
+    [Parameter]
+    public StrokeLineCap Cap { get; set; }
+    [Parameter]
+    public StrokeLineJoin Join { get; set; }
+    [Parameter]
+    public int StrokeDashArray { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseMove { get; set; }
+    [Parameter]
+    public EventCallback<WheelEventArgs> OnMouseWheel { get; set; }
+    [Parameter]
+    public EventCallback<DragEventArgs> OnDrag { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
+    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
+}

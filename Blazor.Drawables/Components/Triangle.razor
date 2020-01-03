@@ -1,0 +1,129 @@
+﻿
+@if (!NoFill && !NoStroke)
+{
+    <polygon points="@GetPoints()" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+             stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+             stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+             stroke-linecap="@Cap.ToString().ToLower()"
+             stroke-width="@StrokeWidth"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+
+    </polygon>
+}
+else if (NoStroke && !NoFill)
+{
+    <polygon points="@GetPoints()" fill="rgba(@Color.R,@Color.G,@Color.B,@Color.A)"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+    </polygon>
+}
+else if (!NoStroke && NoFill)
+{
+    <polygon points="@GetPoints()"
+             stroke="rgba(@StrokeColor.R,@StrokeColor.G,@StrokeColor.B,@StrokeColor.A)"
+             stroke-width="@StrokeWidth"
+             stroke-dasharray="@StrokeDashArray" stroke-linejoin="@Join.ToString().ToLower()"
+             stroke-linecap="@Cap.ToString().ToLower()"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+
+    </polygon>
+}
+else
+{
+    <polygon points="@GetPoints()"
+             @onclick="OnClick"
+             @ondblclick="OnDoubleClick"
+             @onmousemove="OnMouseMove"
+             @onmousewheel="OnMouseWheel"
+             @ondrag="OnDrag"
+             @onmousedown="OnMousePressed"
+             @onmouseup="OnMouseReleased"
+             @onmouseout="OnMouseOut"
+             @onmouseover="OnMouseOver"
+             style="opacity:@Opacity">
+    </polygon>
+}
+
+
+@code
+{
+    [Parameter]
+    public double X1{ get; set; }
+    [Parameter]
+    public double X2 { get; set; }
+    [Parameter]
+    public double X3 { get; set; }
+    [Parameter]
+    public double Y1 { get; set; }
+    [Parameter]
+    public double Y2 { get; set; }
+    [Parameter]
+    public double Y3 { get; set; }
+    [Parameter]
+    public double Opacity { get; set; } = 1;
+    [Parameter]
+    public bool NoFill { get; set; }
+    [Parameter]
+    public System.Drawing.Color Color { get; set; } = Color.Black;
+    [Parameter]
+    public bool NoStroke { get; set; }
+    [Parameter]
+    public Color StrokeColor { get; set; }
+    [Parameter]
+    public double StrokeWidth { get; set; } = 1;
+    [Parameter]
+    public StrokeLineCap Cap { get; set; }
+    [Parameter]
+    public StrokeLineJoin Join { get; set; }
+    [Parameter]
+    public int StrokeDashArray { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseMove { get; set; }
+    [Parameter]
+    public EventCallback<WheelEventArgs> OnMouseWheel { get; set; }
+    [Parameter]
+    public EventCallback<DragEventArgs> OnDrag { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseOut { get; set; }
+    public EventCallback<MouseEventArgs> OnMouseOver { get; set; }
+
+    private string GetPoints()
+    {
+        return $"{X1},{Y1} {X2},{Y2} {X3},{Y3}";
+    }
+}

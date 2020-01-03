@@ -1,0 +1,46 @@
+﻿<svg
+     @onclick="OnClick"
+     @ondblclick="OnDoubleClick"
+     @onmousemove="OnMouseMove"
+     @onmousewheel="OnMouseWheel"
+     @ondrag="OnDrag"
+     @onmousedown="OnMousePressed"
+     @onmouseup="OnMouseReleased">
+    @ChildContent
+</svg>
+<style>
+    svg
+    {
+        background-color:rgba(@BackgroundColor.R,@BackgroundColor.G,@BackgroundColor.B,@BackgroundColor.A);
+        width:@Width.ToString()px;
+        height:@Height.ToString()px;
+    }
+</style>
+@code
+{
+    [Parameter]
+    public int Height { get; set; }
+    [Parameter]
+    public int Width { get; set; }
+    [Parameter]
+    public System.Drawing.Color BackgroundColor { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseMove { get; set; }
+    [Parameter]
+    public EventCallback<WheelEventArgs> OnMouseWheel { get; set; }
+    [Parameter]
+    public EventCallback<DragEventArgs> OnDrag { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMousePressed { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseReleased { get; set; }
+
+
+}
