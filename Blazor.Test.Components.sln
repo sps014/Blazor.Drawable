@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Test.Components", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Drawables", "Blazor.Drawables\Blazor.Drawables.csproj", "{B1DE7AF0-2B7F-4A3C-A73A-3A01FDF4BD49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.WebCam", "Blazor.WebCam\Blazor.WebCam.csproj", "{19DEFAA4-5976-4C71-9E40-E1E9DF2B391B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1DE7AF0-2B7F-4A3C-A73A-3A01FDF4BD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1DE7AF0-2B7F-4A3C-A73A-3A01FDF4BD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1DE7AF0-2B7F-4A3C-A73A-3A01FDF4BD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DEFAA4-5976-4C71-9E40-E1E9DF2B391B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DEFAA4-5976-4C71-9E40-E1E9DF2B391B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DEFAA4-5976-4C71-9E40-E1E9DF2B391B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DEFAA4-5976-4C71-9E40-E1E9DF2B391B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

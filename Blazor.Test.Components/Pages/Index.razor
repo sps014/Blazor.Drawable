@@ -1,20 +1,24 @@
 ﻿@page "/"
 @using Blazor.Drawables.Components
 @using System.Drawing
+@inject IJSRuntime Runtime
 
-    <Canvas BackgroundColor="Color.DodgerBlue" Height="200" Width="400" OnMouseMove="Clicked">
-        <Arc X="100" Y="100" Radius="100" StartAngle="0" EndAngle="100"
-                StrokeColor="Color.Black" StrokeWidth="5"  Mode="Arc.ArcMode.CHORD" Color="Color.Yellow"/>
+<div style="background-color:black;width:100%">
+    <Canvas BackgroundColor="Color.DodgerBlue" Width="Width" Height="Height" OnMouseMove="KeyDown">
+        <!--Pipes-->
+        @for(int i=0;i<Pipes.Count;i++)
+        {
+            <Rect X="Pipes[i].X" Y="0" 
+                  Height="Pipes[i].LowerY" Width="Pipes[i].Width"
+                  Color="Pipes[i].Color"></Rect>
+            <Rect X="Pipes[i].X" Y="Pipes[i].UpperY"
+                  Height="Height" Width="Pipes[i].Width"
+                  Color="Color.Green"></Rect>
+        }
+        <!--Super Bird-->
+        <Circle X="player.X" Y="player.Y" Radius="25" Color="Color.DeepPink"/>
     </Canvas>
-<p>(@x,@y)</p>
+    <p style="color:yellow">DeltaTime:@DeltaTime ms   ->> @data</p>
+</div>
 
-@code
-{
-    int x, y;
-    void Clicked(MouseEventArgs e)
-    {
-        Random r = new Random(DateTime.Now.Millisecond);
-        x = (int)e.ClientX;
-        y = (int)e.ClientY;
-    }
-}
+

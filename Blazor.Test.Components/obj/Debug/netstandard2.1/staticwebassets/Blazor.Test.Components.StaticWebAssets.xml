@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/Blazor.Drawables" Path="C:\Users\Shivendra\source\repos\Blazor.Test.Components\Blazor.Drawables\wwwroot\" />
+  <ContentRoot BasePath="_content/BlazorML5" Path="C:\Users\Shivendra\.nuget\packages\blazorml5\1.0.0\build\..\staticwebassets\" />
+</StaticWebAssets>

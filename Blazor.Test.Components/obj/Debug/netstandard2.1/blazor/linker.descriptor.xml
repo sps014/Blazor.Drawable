@@ -1,0 +1,5 @@
+﻿<linker>
+  <assembly fullname="Blazor.Test.Components">
+    <type fullname="*" required="true" />
+  </assembly>
+</linker>
