@@ -1170,23 +1170,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shivendra\\.nuget\\packages\\": {},
+    "C:\\Users\\shive\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.Test.Components\\Blazor.Test.Components.csproj",
+      "projectUniqueName": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.Test.Components\\Blazor.Test.Components.csproj",
       "projectName": "Blazor.Test.Components",
-      "projectPath": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.Test.Components\\Blazor.Test.Components.csproj",
-      "packagesPath": "C:\\Users\\Shivendra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.Test.Components\\obj\\",
+      "projectPath": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.Test.Components\\Blazor.Test.Components.csproj",
+      "packagesPath": "C:\\Users\\shive\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.Test.Components\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Shivendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shive\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1200,8 +1200,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.Drawables\\Blazor.Drawables.csproj": {
-              "projectPath": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.Drawables\\Blazor.Drawables.csproj"
+            "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.Drawables\\Blazor.Drawables.csproj": {
+              "projectPath": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.Drawables\\Blazor.Drawables.csproj"
             }
           }
         }
@@ -1253,7 +1253,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200-preview-014883\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -932,23 +932,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shivendra\\.nuget\\packages\\": {},
+    "C:\\Users\\shive\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.WebCam\\Blazor.WebCam.csproj",
+      "projectUniqueName": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.WebCam\\Blazor.WebCam.csproj",
       "projectName": "Blazor.WebCam",
-      "projectPath": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.WebCam\\Blazor.WebCam.csproj",
-      "packagesPath": "C:\\Users\\Shivendra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shivendra\\source\\repos\\Blazor.Test.Components\\Blazor.WebCam\\obj\\",
+      "projectPath": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.WebCam\\Blazor.WebCam.csproj",
+      "packagesPath": "C:\\Users\\shive\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shive\\Desktop\\Test\\Blazor.Drawable\\Blazor.WebCam\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Shivendra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shive\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -998,7 +998,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200-preview-014883\\RuntimeIdentifierGraph.json"
       }
     }
   }
